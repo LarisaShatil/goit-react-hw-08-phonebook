@@ -1,21 +1,32 @@
-import s from './App.module.css';
+import React from "react";
+import { useDispatch } from 'react-redux';
+// import { authOperations } from './redux/auth';
+import authOperations from './redux/auth/auth-operations'
+import { Routes, Route } from 'react-router-dom';
+import { Layout } from './components/Layout/Layout';
+import HomeView from './views/HomeView';
+import LoginView from './views/LoginView';
+import RegisterView from './views/RegisterView';
+import ContactsView from './views/ContactsView';
+import { useEffect } from 'react';
 
-import ContactForm from './components/ContactForm/ContactForm';
-import Filter from './components/Filter/Filter';
-
-import ContactList from './components/ContactList/ContactList';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
-    <div className={s.App}>
-      <h1 className={s.title}>Phonebook</h1>
-      <ContactForm />
-       <h2>Contacts</h2>
-      <Filter />
-      {/* { contactsList.length > 0 && <ContactList />
-      } */}
-      <ContactList />
-    </div>
+          <Routes>
+        <Route exact path="/" element={<Layout/>}>
+          <Route index element={<HomeView />} />
+          <Route path="/register" element={<RegisterView/>} />
+          <Route path="/login" element={<LoginView/>} />
+          <Route path="/contacts" element={<ContactsView/>} />
+        </Route>
+      </Routes>
   )
 };
 

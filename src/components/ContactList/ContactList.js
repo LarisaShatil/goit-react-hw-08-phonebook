@@ -1,31 +1,45 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './ContactList.module.css';
-
 import { getFilterValue } from '../../redux/filterSlice';
-import { useSelector } from 'react-redux';
-import { useGetContactsQuery } from '../../services/contactsApi';
-
-import { ContactItem } from '../ContactItem.js/ContactItem';
+import { useSelector, useDispatch } from 'react-redux';
 import { Spinner } from '../Spinner/Spinner';
 import { NotFound } from '../NotFound/NotFound';
+import {  contactsSelectors } from '../../redux/contacts';
+import contactsOperations from '../../redux/contacts/contacts-operations';
+import { ContactItem } from '../ContactItem.js/ContactItem';
 
   
 const ContactList = () => {
-  const { data: contacts, isFetching, isError } = useGetContactsQuery();
-  const filterName = useSelector(getFilterValue).toLowerCase();
-  // 2) const filterName = useSelector(state => state.filter);
+  const dispatch = useDispatch();
+  // const onDeleteButton = id => dispatch(contactsOperations.deleteContact(id));
 
-  let visibleContacts = !filterName ? contacts :
-    contacts.filter(contact => contact.name.toLowerCase().includes(filterName));
+ useEffect(() => {
+      dispatch(contactsOperations.fetchContacts());
+ }, [dispatch]);
+  
+  const contacts = useSelector(contactsSelectors.getContacts);
+  console.log('ContactList', contacts);
+  // const filterName = useSelector(getFilterValue).toLowerCase();
+  // // 2) const filterName = useSelector(state => state.filter);
+
+  // let visibleContacts = !filterName ? contacts :
+  //   contacts.filter(contact => contact.name.toLowerCase().includes(filterName));
+  // const contacts = useSelector(contactsSelectors.getVisibleContacts);
+
 
   return (
     <>
-      {isFetching && <Spinner />}
+        <h1>Contact List</h1>
+      {/* {isFetching && <Spinner />}
       {isError && <NotFound/>}
       {contacts && <ul className={s.list}>{visibleContacts.map(contact =>
         <ContactItem key={contact.id} {...contact}   />
       )}
-      </ul>}
+      </ul>} */}
+     <ul className={s.list}>{contacts.map(({id,name,number}) =>
+       <ContactItem key={id} id={id} name={name} number={number}  />
+      )}
+      </ul>
     </>
 
   )

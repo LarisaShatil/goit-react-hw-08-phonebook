@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from 'prop-types';
 import s from './Filter.module.css';
 
@@ -6,8 +7,8 @@ import { getFilterValue, setFilter } from '../../redux/filterSlice';
 
 
 function Filter() {
-  const filterName = useSelector(getFilterValue);
-  const dispatch = useDispatch();
+  // const filterName = useSelector(getFilterValue);
+  // const dispatch = useDispatch();
 
   return (
     <>
@@ -16,9 +17,9 @@ function Filter() {
           className={s.input}
           type="text"
           name="filter"
-          value={filterName}
+          // value={filterName}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          onChange={e => dispatch(setFilter(e.currentTarget.value))}
+          // onChange={e => dispatch(setFilter(e.currentTarget.value))}
         />
       </label>
     </>

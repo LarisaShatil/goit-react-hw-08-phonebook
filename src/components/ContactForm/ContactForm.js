@@ -1,13 +1,19 @@
+import React from "react";
 import s from './ContactForm.module.css';
-import { useState} from 'react';
-import { useGetContactsQuery, useCreateContactMutation } from '../../services/contactsApi';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useGetContactsQuery, useCreateContactMutation } from '../../services/contactsApi';
+import { contactsOperations } from '../../redux/contacts';
+import contactsSelectors  from '../../redux/contacts/contacts-selectors';
 
-const ContactForm = () => {
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const { data: contacts } = useGetContactsQuery();
-  const [createContact, {isLoading}] = useCreateContactMutation();
+  const dispatch = useDispatch();
+
+  // const { data: contacts } = useGetContactsQuery();
+  // const [createContact, {isLoading}] = useCreateContactMutation();
  
 
   //taking data from input
@@ -31,27 +37,29 @@ const ContactForm = () => {
     setNumber('');
   };
   
-const checkNewContacts = (data) => {
+  const checkNewContacts = (data) => {
     const name = data.name.toLowerCase();
-    const sameContact = contacts.some(contact => contact.name.toLowerCase().includes(name));
-    if (sameContact) {
-      return alert(`${data.name} is already in your contacts`)
-  }
-  return true;
+    //   const sameContact = contacts.some(contact => contact.name.toLowerCase().includes(name));
+    //   if (sameContact) {
+    //     return alert(`${data.name} is already in your contacts`)
+    // }
+    // return true;
   };
 
-  //collecting and forwarding data to obj
+  
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    const obj = {
+    const contact = {
       name: name,
       number: number
     };
+
+    dispatch(contactsOperations.addContact(contact));
   
-    if (checkNewContacts(obj)) {
-      createContact(obj);
-    };
+    // if (checkNewContacts(contact)) {
+    //   createContact(contact);
+    // };
 
     resetForm();
   };
@@ -95,7 +103,7 @@ const checkNewContacts = (data) => {
       <button
         className={s.addBtn}
         type="submit"
-        disabled={isLoading}
+        // disabled={isLoading}
       >
         Add contact
       </button>
@@ -104,5 +112,3 @@ const checkNewContacts = (data) => {
 
   )
 };
-
-export default ContactForm;
