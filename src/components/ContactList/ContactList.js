@@ -24,21 +24,28 @@ const ContactList = () => {
   
   const getFilteredContacts = (filterValue.value === '') ? contacts
     : [...contacts].filter(contact => contact.name.toLowerCase().includes(filterValue));
-console.log(getFilteredContacts)
+  console.log(getFilteredContacts)
+  
+      //   {/* {isFetching && <Spinner />}
+      // {isError && <NotFound/>}
+      // {contacts && <ul className={s.list}>{visibleContacts.map(contact =>
+      //   <ContactItem key={contact.id} {...contact}   />
+      // )}
+      // </ul>} */}
 
   return (
     <>
-        <h1>Contact List</h1>
-      {/* {isFetching && <Spinner />}
-      {isError && <NotFound/>}
-      {contacts && <ul className={s.list}>{visibleContacts.map(contact =>
-        <ContactItem key={contact.id} {...contact}   />
-      )}
-      </ul>} */}
-     <ul className={s.list}>{getFilteredContacts.map(({id,name,number}) =>
-       <ContactItem key={id} id={id} name={name} number={number}  />
-      )}
-      </ul>
+
+      {(getFilteredContacts.length) ?
+        (<>
+          <h1>Contact List</h1>
+          <ul className={s.list}>
+          {getFilteredContacts.map(({ id, name, number }) =>
+            <ContactItem key={id} id={id} name={name} number={number} />)}
+          </ul>
+          </>)
+      : (<h1>No contacts</h1>)}
+
     </>
 
   )
