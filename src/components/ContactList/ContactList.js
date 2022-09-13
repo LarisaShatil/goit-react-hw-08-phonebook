@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './ContactList.module.css';
 import { getFilterValue } from '../../redux/filterSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,22 +10,21 @@ import { ContactItem } from '../ContactItem.js/ContactItem';
 
   
 const ContactList = () => {
+  const contacts = useSelector(contactsSelectors.getContacts);
+  const filterValue = useSelector(getFilterValue);
   const dispatch = useDispatch();
-  // const onDeleteButton = id => dispatch(contactsOperations.deleteContact(id));
 
  useEffect(() => {
-      dispatch(contactsOperations.fetchContacts());
+   dispatch(contactsOperations.fetchContacts());
  }, [dispatch]);
   
-  const contacts = useSelector(contactsSelectors.getContacts);
-  console.log('ContactList', contacts);
-  // const filterName = useSelector(getFilterValue).toLowerCase();
-  // // 2) const filterName = useSelector(state => state.filter);
 
-  // let visibleContacts = !filterName ? contacts :
-  //   contacts.filter(contact => contact.name.toLowerCase().includes(filterName));
-  // const contacts = useSelector(contactsSelectors.getVisibleContacts);
 
+  console.log('contacts: ', contacts, 'filterValue : ', filterValue.value, filterValue.value === '');
+  
+  const getFilteredContacts = (filterValue.value === '') ? contacts
+    : [...contacts].filter(contact => contact.name.toLowerCase().includes(filterValue));
+console.log(getFilteredContacts)
 
   return (
     <>
@@ -36,7 +35,7 @@ const ContactList = () => {
         <ContactItem key={contact.id} {...contact}   />
       )}
       </ul>} */}
-     <ul className={s.list}>{contacts.map(({id,name,number}) =>
+     <ul className={s.list}>{getFilteredContacts.map(({id,name,number}) =>
        <ContactItem key={id} id={id} name={name} number={number}  />
       )}
       </ul>

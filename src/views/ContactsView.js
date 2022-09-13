@@ -37,7 +37,7 @@ export default function ContactsView(params) {
         {/* {isLoadingTodos && <h1>Загружаем...</h1>} */}
 
         <ContactForm />
-              {/* <Filter /> */}
+        <Filter />
       <ContactList />
       </div>
 

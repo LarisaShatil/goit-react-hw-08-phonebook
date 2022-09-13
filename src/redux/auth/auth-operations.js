@@ -47,8 +47,10 @@ const logOut = createAsyncThunk('auth/logout', async () => {
 const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
+          console.log('START');
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
+    console.log(state)
 
     if (persistedToken === null) {
       console.log('NO token received');

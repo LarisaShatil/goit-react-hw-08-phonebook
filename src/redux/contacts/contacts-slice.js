@@ -15,7 +15,7 @@ const contactsSlice = createSlice({
       state.isRefreshing = true;
     },
     [contactsOperations.addContact.fulfilled](state, { payload }) {
-      state.contacts.push(payload);
+      state.contacts.unshift(payload);
       // state.contacts.concat(payload);
       state.isRefreshing = false;
     },
@@ -39,12 +39,6 @@ const contactsSlice = createSlice({
       state.contacts = state.contacts.filter(({ id }) => id !== payload)
       state.isRefreshing = false;
     },
-    // [changeContact.fulfilled](state, { payload }) {
-    //      state.contacts = state.contacts.map(contact =>
-    //         contact.id === payload.id ? payload : contact
-    //      );
-    //   },
-
   },
 });
 export default contactsSlice.reducer;

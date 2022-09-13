@@ -25,7 +25,7 @@ export default function UserMenu() {
 const dispatch = useDispatch();
 // const user = useSelector(authSelectors.getUser);
 
-  // console.log(user, 'user');
+//   console.log(user, 'user');
   const avatar = defaultAvatar;
 
   return (
