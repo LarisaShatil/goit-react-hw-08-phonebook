@@ -1,22 +1,18 @@
 import React from "react";
+import toast from 'react-hot-toast';
 import s from './ContactForm.module.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useGetContactsQuery, useCreateContactMutation } from '../../services/contactsApi';
 import { contactsOperations } from '../../redux/contacts';
 import contactsSelectors  from '../../redux/contacts/contacts-selectors';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(contactsSelectors.getContacts);
 
   const dispatch = useDispatch();
-
-  // const { data: contacts } = useGetContactsQuery();
-  // const [createContact, {isLoading}] = useCreateContactMutation();
- 
-
-  //taking data from input
+  
   const handleChange = ({ target }) => {
     const { name, value } = target;
 
@@ -39,11 +35,14 @@ export const ContactForm = () => {
   
   const checkNewContacts = (data) => {
     const name = data.name.toLowerCase();
-    //   const sameContact = contacts.some(contact => contact.name.toLowerCase().includes(name));
-    //   if (sameContact) {
-    //     return alert(`${data.name} is already in your contacts`)
-    // }
-    // return true;
+    const sameContact = contacts.some(contact => contact.name.toLowerCase().includes(name));
+    
+    if (sameContact) {
+      toast(`${data.name} is already in your contacts`)
+      return false;
+    } 
+    
+    return true;
   };
 
   
@@ -55,13 +54,11 @@ export const ContactForm = () => {
       number: number
     };
 
-    dispatch(contactsOperations.addContact(contact));
-  
-    // if (checkNewContacts(contact)) {
-    //   createContact(contact);
-    // };
-
-    resetForm();
+    if (checkNewContacts(contact)) {
+      dispatch(contactsOperations.addContact(contact));
+      toast(`Was added to your contacts!`)
+      resetForm();
+    };
   };
 
   return (
@@ -103,12 +100,9 @@ export const ContactForm = () => {
       <button
         className={s.addBtn}
         type="submit"
-        // disabled={isLoading}
       >
         Add contact
       </button>
-
     </form>
-
   )
 };

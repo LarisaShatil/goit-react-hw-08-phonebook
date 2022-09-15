@@ -16,8 +16,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
     token.set(data.token);
-    console.log('POST')
-      return data;
+    return data;
   } catch (error) {
     console.log('Error register operations', error);
   }
@@ -26,7 +25,6 @@ const register = createAsyncThunk('auth/register', async credentials => {
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
-    console.log('LOG IN')
     token.set(data.token);
     return data;
   } catch (error) {
@@ -47,10 +45,8 @@ const logOut = createAsyncThunk('auth/logout', async () => {
 const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-          console.log('START');
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    console.log(state)
 
     if (persistedToken === null) {
       console.log('NO token received');

@@ -1,14 +1,16 @@
 import React from 'react';
 import { contactsOperations } from '../../redux/contacts';
-import { useDispatch, useSelector } from 'react-redux';
-// import { useDeleteContactMutation } from '../../services/contactsApi';
+import { useDispatch} from 'react-redux';
+import toast from 'react-hot-toast';
 import s from './ContactItem.module.css';
 
 export function ContactItem({ name, number, id }) {
   const dispatch = useDispatch();
-  const onDelete = id => dispatch(contactsOperations.deleteContact(id));
+  const onDelete = id => {
+     toast(`The contact was deleted!`)
+    return dispatch(contactsOperations.deleteContact(id))
+  };
 
- 
   return (
     <li className={s.item}>
       <p className={s.text}>{name}</p>
@@ -19,7 +21,6 @@ export function ContactItem({ name, number, id }) {
         id={id}
       onClick={() =>onDelete(id)}
       >Delete ❌
-        {/* {isDeleting ? 'Deleting...' : 'Delete ❌'} */}
       </button>
     </li>
   )

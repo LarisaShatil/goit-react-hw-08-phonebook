@@ -5,7 +5,6 @@ import s from './Filter.module.css';
 import { useDispatch} from 'react-redux';
 import {  setFilter } from '../../redux/filterSlice';
 
-
 function Filter() {
   const dispatch = useDispatch();
 
@@ -16,7 +15,6 @@ function Filter() {
           className={s.input}
           type="text"
           name="filter"
-          // value={filterName}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           onChange={e => dispatch(setFilter(e.currentTarget.value))}
         />

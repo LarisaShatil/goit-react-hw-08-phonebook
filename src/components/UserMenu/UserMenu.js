@@ -1,14 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-// import { useAuth } from '../../hooks';
-// import { Box } from '../Box';
 import { authOperations, authSelectors } from '../../redux/auth';
 import defaultAvatar from './avatar.png';
 
 const styles = {
   container: {
     display: 'flex',
-    alignItems:'center',
+    alignItems: 'center',
+    paddingRight: 20,
   },
   avatar: {
     margin: 5,
@@ -19,20 +18,28 @@ const styles = {
     fontWeight: 700,
     marginRight: 12,
   },
+  button: {
+    backgroundColor: 'rgb(23, 61, 0)',
+    border: 'none',
+    borderRadius: 5,
+    padding: 8,
+    color: '#fff',
+    fontWeight: 600,
+    fontSize: 14,
+  }
 };
 
 export default function UserMenu() {
 const dispatch = useDispatch();
-// const user = useSelector(authSelectors.getUser);
+const user = useSelector(authSelectors.getUser);
 
-//   console.log(user, 'user');
   const avatar = defaultAvatar;
 
   return (
     <div style={styles.container}>
       <img src={avatar} alt="" width="32" style={styles.avatar} />
-      {/* <span style={styles.name}>You are welcome, {user.name}</span> */}
-      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
+      <span style={styles.name}>{user.name}</span>
+      <button style={styles.button} type="button" onClick={() => dispatch(authOperations.logOut())}>
         Sign out
       </button>
     </div>

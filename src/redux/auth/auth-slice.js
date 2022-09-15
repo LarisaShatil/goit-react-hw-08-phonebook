@@ -32,7 +32,7 @@ const authSlice = createSlice({
       state.isRefreshingUser = true;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
-      state.user = action.payload.user;
+      state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshingUser = false;
     },
