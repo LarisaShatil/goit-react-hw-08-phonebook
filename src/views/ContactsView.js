@@ -1,14 +1,11 @@
 import React from "react";
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-// import TodoList from '../components/TodoList';
-// import TodoEditor from '../components/TodoEditor';
 import Filter from '../components/Filter/Filter';
-// import { todosOperations, todosSelectors } from '../redux/todos';
 import { Helmet } from 'react-helmet';
 import ContactList from '../components/ContactList/ContactList';
 import { ContactForm } from '../components/ContactForm/ContactForm';
+import { useSelector } from "react-redux";
+import { contactsSelectors } from "../redux/contacts";
+import { Spinner } from "../components/Spinner/Spinner";
 
 const barStyles = {
   display: 'block',
@@ -18,15 +15,9 @@ const barStyles = {
   paddingTop: 20,
 };
 
-export default function ContactsView(params) {
-  // const dispatch = useDispatch();
-  // const isLoadingTodos = useSelector(todosSelectors.getLoading);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const toggleModal = () => setIsModalOpen(state => !state);
-
-  // useEffect(() => {
-  //   dispatch(todosOperations.fetchTodos())
-  // }, [dispatch]);
+export default function ContactsView() {
+  const isLoading = useSelector(contactsSelectors.getLoading);
+  
 
   return (
     <>
@@ -34,14 +25,12 @@ export default function ContactsView(params) {
         <title>Contacts</title>
       </Helmet>
       <div style={barStyles}>
-        {/* {isLoadingTodos && <h1>Загружаем...</h1>} */}
+        {isLoading && <Spinner />}
 
         <ContactForm />
         <Filter />
-      <ContactList />
+        <ContactList />
       </div>
-
-
     </>
   );
 };

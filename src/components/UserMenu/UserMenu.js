@@ -24,7 +24,10 @@ const styles = {
     borderRadius: 5,
     padding: 8,
     color: '#fff',
-    fontWeight: 600,
+    fontFamily:  ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    'sans-serif'],
+    fontWeight: 700,
     fontSize: 14,
   }
 };

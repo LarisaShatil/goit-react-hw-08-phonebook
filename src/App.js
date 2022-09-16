@@ -14,17 +14,15 @@ const RegisterView = lazy(() => import('./views/RegisterView'));
 const ContactsView = lazy(() => import('./views/ContactsView'));
 
 
-const App = () => {
+export default function App () {
   const dispatch = useDispatch();
   const isRefreshingUser = useSelector(authSelectors.getIsRefreshingUser)
-
-  console.log(isRefreshingUser);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
-  return isRefreshingUser ? (<Spinner />)
+  return isRefreshingUser ? (<h1>Refreshing the user</h1> )
     : (
       <Routes>
         <Route exact path="/" element={<Layout />}>
@@ -49,5 +47,3 @@ const App = () => {
       </Routes>
     )
 };
-
-export default App;

@@ -7,7 +7,7 @@ import s from './ContactItem.module.css';
 export function ContactItem({ name, number, id }) {
   const dispatch = useDispatch();
   const onDelete = id => {
-     toast(`The contact was deleted!`)
+     toast.success(`The contact was deleted!`)
     return dispatch(contactsOperations.deleteContact(id))
   };
 

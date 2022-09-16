@@ -38,7 +38,7 @@ export const ContactForm = () => {
     const sameContact = contacts.some(contact => contact.name.toLowerCase().includes(name));
     
     if (sameContact) {
-      toast(`${data.name} is already in your contacts`)
+      toast.error(`${data.name} is already in your contacts`)
       return false;
     } 
     
@@ -56,7 +56,7 @@ export const ContactForm = () => {
 
     if (checkNewContacts(contact)) {
       dispatch(contactsOperations.addContact(contact));
-      toast(`Was added to your contacts!`)
+      toast.success(`Was added to your contacts!`)
       resetForm();
     };
   };

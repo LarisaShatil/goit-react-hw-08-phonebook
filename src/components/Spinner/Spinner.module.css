@@ -15,7 +15,6 @@
   border-top-color: rgba(134, 5, 5, 0.4);
   border-bottom-color: rgb(134, 5, 5, 0.4);
   border-radius: 50%;
-  /* animation: spinner 1s linear infinite; */
   animation: spinner 1s ease infinite;
 }
 

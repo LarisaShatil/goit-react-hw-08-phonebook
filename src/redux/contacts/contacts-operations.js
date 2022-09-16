@@ -23,7 +23,6 @@ const addContact = createAsyncThunk(
    async newContact => {
       try {
          const { data } = await axios.post('/contacts', newContact);
-        //  toast.success(`Contact is create!`);
          return data;
       } catch (error) {
          console.log('Error addContact', error);
