@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { authOperations } from '../redux/auth';
+import toast from "react-hot-toast";
 
 
 const styles = {
@@ -41,10 +42,16 @@ export default function RegisterView() {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (password.length < 8) {
+      toast.error('Password must be at least 8 characters long');
+      return;
+    } else {
     dispatch(authOperations.register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
+    }
   };
 
   return (
