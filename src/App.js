@@ -13,16 +13,15 @@ const LoginView = lazy(() => import('./views/LoginView'));
 const RegisterView = lazy(() => import('./views/RegisterView'));
 const ContactsView = lazy(() => import('./views/ContactsView'));
 
-
-export default function App () {
-  const dispatch = useDispatch();
+const App = () => {
+ const dispatch = useDispatch();
   const isRefreshingUser = useSelector(authSelectors.getIsRefreshingUser)
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
-  return isRefreshingUser ? (<h1>Refreshing the user</h1> )
+  return isRefreshingUser ? (<Spinner/> )
     : (
       <Routes>
         <Route exact path="/" element={<Layout />}>
@@ -47,3 +46,5 @@ export default function App () {
       </Routes>
     )
 };
+
+export default App;
