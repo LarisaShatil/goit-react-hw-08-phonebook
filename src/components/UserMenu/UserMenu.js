@@ -1,50 +1,32 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from '../../redux/auth';
-import defaultAvatar from './avatar.png';
+import FlexContainer from "../FlexContainer/FlexContainer";
 
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    paddingRight: 20,
-  },
-  avatar: {
-    margin: 5,
-    width: 60,
-    borderRadius: 50,
-  },
-  name: {
-    fontWeight: 700,
-    marginRight: 12,
-  },
-  button: {
-    backgroundColor: 'rgb(23, 61, 0)',
-    border: 'none',
-    borderRadius: 5,
-    padding: 8,
-    color: '#fff',
-    fontFamily:  ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    'sans-serif'],
-    fontWeight: 700,
-    fontSize: 14,
-  }
-};
+import s from './UserMenu.module.css';
+
+
 
 export default function UserMenu() {
-const dispatch = useDispatch();
-const user = useSelector(authSelectors.getUser);
-
-  const avatar = defaultAvatar;
+  const dispatch = useDispatch();
+  const user = useSelector(authSelectors.getUser);
+  console.log(user);
 
   return (
-    <div style={styles.container}>
-      <img src={avatar} alt="" width="32" style={styles.avatar} />
-      <span style={styles.name}>{user.name}</span>
-      <button style={styles.button} type="button" onClick={() => dispatch(authOperations.logOut())}>
-        Sign out
-      </button>
-    </div>
+    <FlexContainer>
+        <div className={s.avatar_box}>
+          <img
+          src={`https://eu.ui-avatars.com/api/?background=a355d3&color=fff&&length=2&name=${user.name}`}
+            alt="avatar"
+            title="Your avatar"
+            className={s.avatar}
+          />
+        </div>
+        <span className={s.name}>{user.name}</span>
+        <button className={s.button} type="button" onClick={() => dispatch(authOperations.logOut())}>
+          Sign out
+        </button>
+    </FlexContainer>
+
   );
 }

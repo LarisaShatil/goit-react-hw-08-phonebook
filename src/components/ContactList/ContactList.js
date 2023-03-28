@@ -22,13 +22,13 @@ const ContactList = () => {
     <div className={s.container}>
       {(getFilteredContacts.length) ?
         (<>
-          <h1 className={s.title}>📝 Contact List </h1>
+          <h1 className={s.title}> Contact List </h1>
           <ul className={s.list}>
             {getFilteredContacts.map(({ id, name, number }) =>
               <ContactItem key={id} id={id} name={name} number={number} />)}
           </ul>
         </>)
-        : (<h1 className={s.title}>No contacts</h1>)}
+        : (<h1 className={s.title}>No contact was found</h1>)}
     </div>
   )
 };

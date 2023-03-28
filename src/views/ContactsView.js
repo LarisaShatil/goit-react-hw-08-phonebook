@@ -10,9 +10,8 @@ import { Spinner } from "../components/Spinner/Spinner";
 const barStyles = {
   display: 'block',
   alignItems: 'center',
-  width: '450px',
   margin: 'auto',
-  paddingTop: 20,
+  padding: '2rem 3rem 0',
 };
 
 export default function ContactsView() {

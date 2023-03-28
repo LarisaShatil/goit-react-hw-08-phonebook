@@ -1,12 +1,14 @@
 import React, { lazy, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
 import { Layout } from './components/Layout/Layout';
 import { authSelectors } from "./redux/auth";
 import { Spinner } from "./components/Spinner/Spinner";
 import authOperations from './redux/auth/auth-operations'
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
+import AppContainer from "./components/AppContainer/AppContainer";
 
 const HomeView = lazy(() => import('./views/HomeView'));
 const LoginView = lazy(() => import('./views/LoginView'));
@@ -23,7 +25,8 @@ const App = () => {
 
   return isRefreshingUser ? (<Spinner />)
     : (
-   <Routes>
+      <AppContainer>
+        <Routes>
           <Route exact path="/" element={<Layout />}>
             <Route index element={<HomeView />} />
             <Route path="/register" element={
@@ -44,6 +47,8 @@ const App = () => {
             } />
           </Route>
         </Routes>
+      </AppContainer>
+   
     )
 };
 

@@ -10,13 +10,13 @@ function Filter() {
 
   return (
     <>
-      <label className={s.label}>🔎 Find by name 
+      <label className={s.label}> Find contact by name 
         <input
           className={s.input}
           type="text"
           name="filter"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          onChange={e => dispatch(setFilter(e.currentTarget.value))}
+          onChange={e => dispatch(setFilter((e.currentTarget.value).trim()))}
         />
       </label>
     </>

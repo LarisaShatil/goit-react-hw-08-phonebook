@@ -1,11 +1,16 @@
+.title {
+  font-weight: 700;
+  margin-top: 1.5rem;
+}
+
 .form {
-  text-align: left;
+  width: 320px;
   margin: auto;
+  text-align: left;
   background-color: var(--main-color);
-  box-shadow: var(--shadow);
   padding: 30px 20px 20px;
   border-radius: 5px;
-  max-width: 360px;
+  box-shadow: var(--shadow);
 }
 
 .label {
@@ -28,8 +33,10 @@
   padding: 5px 5px;
 }
 
-.addBtn {
+.submitBtn {
+  display: block;
   margin-left: auto;
+  padding: 0.5rem 1rem;
   margin-top: 20px;
   font-weight: 600;
   background-color: var(--green-color);

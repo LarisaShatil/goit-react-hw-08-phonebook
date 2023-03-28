@@ -7,11 +7,11 @@ import { authSelectors } from '../../redux/auth';
 const Link = styled(NavLink)`
   display: inline-block;
   text-decoration: none;
-  padding: 12px;
+  padding: 0.5rem 1rem 0.5rem 0;
   font-weight: 700;
-  color: #2a363b;
+  color: var(--black-color);
   &.active {
-    color: #e84a5f;
+    color: var(--violet-color);
   }
 `;
 
