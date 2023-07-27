@@ -7,7 +7,7 @@ https://mockapi.io/
 
 # Phonebook-App
 
-Individual project, 2022.</br> The application was creating for storing phone
+Individual project</br> The application was creating for storing phone
 contacts. </br> It helps:
 
 <ol>
