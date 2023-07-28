@@ -16,8 +16,7 @@ contacts. </br> It helps:
 <li> easily to find the needed contact by name.</li>
 </ol>
 There are public and private routes in the Phonebook-App for different types of users - unregistered and registered.
-View of the registered user:
-![image](https://github-production-user-asset-6210df.s3.amazonaws.com/79214239/256751647-92ccdf70-3266-4ef6-a8d6-630fd7cdc840.png)
+
 
 
 ## Tech stack
