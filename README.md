@@ -24,7 +24,7 @@ There are public and private routes in the Phonebook-App for different types of 
 <br>
 <br>
 
-*Example for the registered user:*
+*Example:*
 <br>
 <img width="60%" src="https://github.com/LarisaShatil/goit-react-hw-08-phonebook/assets/79214239/bdac07d5-bccc-4e9b-91c5-8b190865a26f" alt="Registered user">
 
