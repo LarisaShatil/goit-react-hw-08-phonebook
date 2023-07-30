@@ -9,6 +9,7 @@ https://mockapi.io/
 
 **Individual project**</br> The application was creating for storing phone
 contacts. </br> 
+<br>
 <img width="50%" src="https://github.com/LarisaShatil/goit-react-hw-08-phonebook/assets/79214239/f0219198-79a3-4be2-8111-6b62efe8f818" alt="Phonebook">
 
 
@@ -23,9 +24,9 @@ There are public and private routes in the Phonebook-App for different types of 
 <br>
 <br>
 
-*Example of registered user:*
+*Example for the registered user:*
 <br>
-<img width="50%" src="https://github.com/LarisaShatil/goit-react-hw-08-phonebook/assets/79214239/bdac07d5-bccc-4e9b-91c5-8b190865a26f" alt="Registered user">
+<img width="60%" src="https://github.com/LarisaShatil/goit-react-hw-08-phonebook/assets/79214239/bdac07d5-bccc-4e9b-91c5-8b190865a26f" alt="Registered user">
 
 
 ## Tech stack
