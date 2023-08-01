@@ -37,3 +37,9 @@
   border: none;
   border-radius: 5px;
 }
+
+ @media (max-width: 767px) {
+   .form, .addBtn, .input {
+     font-size: 12px;
+   }
+ }

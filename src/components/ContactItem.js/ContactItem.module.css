@@ -1,25 +1,20 @@
 .item {
   padding: 10px 0;
 }
-.text_name{
+
+.text_name {
   font-weight: 700;
 }
-.text_name::first-letter{
-  text-transform: uppercase;
-}
 
-.text {
-  display: inline-block;
-  margin-right: 15px;
+.text_name::first-letter {
+  text-transform: uppercase;
 }
 
 .deleteBtn {
   background-color: var(--red-color);
-  color: var(--white-color);
   border: none;
   border-radius: 8px;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
+  padding: 0.5rem;
 }
 
 .deleteBtn:hover {
@@ -27,8 +22,10 @@
   box-shadow: var(--shadow);
 }
 
-@media (max-width: 480px) {
-  .btnText {
-    display: none;
+@media (max-width: 767px) {
+
+  .deleteBtn {
+    font-size: 12px;
+    padding: 0.4rem;
   }
 }

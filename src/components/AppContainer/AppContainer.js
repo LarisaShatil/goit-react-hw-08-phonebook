@@ -4,7 +4,10 @@ import s from './AppContainer.module.css';
 
 const AppContainer = ({children}) => {
   return (
-    <div className={s.container}>{children}</div>
+    <>
+      <div className={s.container}>{children}</div>
+    </>
+ 
   )
 }
 

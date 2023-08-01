@@ -4,3 +4,9 @@
   align-items: center;
   text-align: center;
 }
+
+@media  (max-width: 576px) {
+.flex_container{
+  font-size: 13px;
+}
+}

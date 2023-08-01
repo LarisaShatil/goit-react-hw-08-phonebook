@@ -36,3 +36,9 @@
    cursor: pointer;
    box-shadow: var(--shadow);
  }
+
+ @media (max-width: 767px) {
+  .button {
+     font-size: 12px;
+   }
+ }

@@ -18,9 +18,14 @@ const styles = {
 
   },
   title: {
+    fontSize: '20px',
     fontWeight: 700,
     fontSize: '2rem',
     textAlign: 'center',
+    backgroundImage: 'radial-gradient(ellipse, #a355d3, #eb4c54)',
+    color: 'transparent',
+    backgroundClip: 'text',
+    WebkitBackgroundClip:'text',
   },
 };
 

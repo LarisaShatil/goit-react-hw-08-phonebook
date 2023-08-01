@@ -22,7 +22,7 @@ export function ContactItem({ name, number, id }) {
           type="button"
           id={id}
           onClick={() => onDelete(id)}
-        ><span className={s.btnText}>Delete </span><span role="img">❌</span>
+        >❌
         </button>
       </FlexContainer>
     </li>

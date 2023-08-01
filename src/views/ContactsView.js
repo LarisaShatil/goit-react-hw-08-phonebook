@@ -7,11 +7,11 @@ import { useSelector } from "react-redux";
 import { contactsSelectors } from "../redux/contacts";
 import { Spinner } from "../components/Spinner/Spinner";
 
-const barStyles = {
+const container = {
   display: 'block',
   alignItems: 'center',
   margin: 'auto',
-  padding: '2rem 3rem 0',
+  padding: '2rem 2rem 0',
 };
 
 export default function ContactsView() {
@@ -23,7 +23,7 @@ export default function ContactsView() {
       <Helmet>
         <title>Contacts</title>
       </Helmet>
-      <div style={barStyles}>
+      <div style={container}>
         {isLoading && <Spinner />}
 
         <ContactForm />
